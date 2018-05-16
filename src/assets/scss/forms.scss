@@ -1,0 +1,6 @@
+.form-groups {
+  display: flex;
+  > :not(.form-input) {
+    display: inline-block;
+  }
+}

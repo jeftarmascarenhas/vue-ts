@@ -7,11 +7,11 @@
       .card_content
         h3.task_count {{ todos.length }} task
         ul.card__list
-          todo(v-for='(todo) in todos', class="card__list__item" :key='todo.id', :todo='todo', @onCompleteTask='completeTask')
-    dialog
+          todo(v-for="(todo) in todos", class="card__list__item" :key="todo.id", :todo="todo", @onCompleteTask="completeTask")
+    modal
       form(@submit.stop.prevent="submitTask")
-        input(type='text', v-model='text')
-        button(type='submit') Add
+        .form-groups
+          input(type="text", v-model="text" class="form-input" placeholder="Add task")
 </template>
 
 <script lang="ts">
@@ -19,7 +19,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import { mapGetters } from 'vuex';
 
 import Todo from '@/components/Todo.vue';
-import Dialog from '@/components/Dialog.vue';
+import Modal from '@/components/Modal.vue';
 
 @Component({
   data () {
@@ -29,7 +29,7 @@ import Dialog from '@/components/Dialog.vue';
   },
   components: {
     Todo,
-    'dialog': Dialog
+    Modal
   },
   computed: {
     ...mapGetters({

@@ -1,6 +1,9 @@
 .btn {
   background-color: transparent;
   border: 0;
+  &:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 .btn-plus {
@@ -12,4 +15,18 @@
   height: 45px;
   font-size: 1.5em;
   box-shadow: 0px 2px 4px lighten($shadow-default, 60%);
+}
+
+.btn-primary {
+  border-radius: 0.2rem;
+  background-color: $bg-default;
+  color: $text-primary;
+  padding: 0.7rem;
+}
+
+.btn-default {
+  border-radius: 0.2rem;
+  background-color: $bg-btn-default;
+  color: $text-primary;
+  padding: 0.7rem;
 }

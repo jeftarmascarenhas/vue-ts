@@ -1,0 +1,7 @@
+.modal-open {
+  overflow: hidden;
+  &.modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}

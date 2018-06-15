@@ -5,7 +5,7 @@
         h2.card__header__title TodoList
         button(@click="showModal = true" class="btn btn-plus") +
       .card_content
-        h3(v-if="todosList" class="task_count") {{ todosList.length }}
+        h3(v-if="todosList" class="task_count") {{ todosList.length }} tasks
         ul.card__list
           todo(v-for="(todo) in todosList", class="card__list__item" :key="todo.id", :todo="todo", @onCompleteTask="completeTask")
     modal(v-if="showModal" @close="showModal = false")

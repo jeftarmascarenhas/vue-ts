@@ -4,7 +4,7 @@ export default {
   completeTask: (state: ITodoItemState , task: ITodoItem) => {
     task.done = !task.done;
   },
-  addTask: (state: ITodoItemState, text: string) => {
-    state.todos.push({ text, done: false });
+  addTask: (state: ITodoItemState, task: ITodoItem) => {
+    state.todosList.push(task);
   }
 }

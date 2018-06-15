@@ -1,53 +1,64 @@
 <template lang="pug">
   section.home
-    .card.card--center.card--radius
+    div(class="card card--center card--radius")
       header.card__header
         h2.card__header__title TodoList
-        button.btn.btn-plus +
+        button(@click="showModal = true" class="btn btn-plus") +
       .card_content
-        h3.task_count {{ todos.length }} task
+        h3(v-if="todosList" class="task_count") {{ todosList.length }} tasks
         ul.card__list
-          todo(v-for="(todo) in todos", class="card__list__item" :key="todo.id", :todo="todo", @onCompleteTask="completeTask")
-    modal
-      form(@submit.stop.prevent="submitTask")
+          todo(v-for="(todo) in todosList", class="card__list__item" :key="todo.id", :todo="todo", @onCompleteTask="completeTask")
+    modal(v-if="showModal" @close="showModal = false")
+      h1(slot="header") Add todo
+      form(@submit.stop.prevent="submitTask" slot="content")
         .form-groups
-          input(type="text", v-model="text" class="form-input" placeholder="Add task")
+          input(type="text" v-model="text" class="form-input" placeholder="Add task")
+          button(type="submit" class="btn btn-primary") Add
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { mapGetters } from 'vuex';
+import { Getter } from 'vuex-class';
+
+import { todos } from '@/store/todos/getters.map';
+import { addTask } from '@/store/todos/actions.map';
 
 import Todo from '@/components/Todo.vue';
 import Modal from '@/components/Modal.vue';
 
 @Component({
-  data () {
-    return {
-      text: ''
-    }
-  },
   components: {
     Todo,
     Modal
   },
   computed: {
     ...mapGetters({
-      todos: 'todos'
+      todosList: 'todosList'
     })
-  },
-  methods: {
-    completeTask(task) {
-      this.$store.dispatch({ type: 'completeTask', task });
-    },
-    submitTask() {
-      const text = this.text;
-      this.$store.dispatch({ type: 'addTask', text });
-      this.text = '';
-    }
   }
 })
-export default class Home extends Vue {}
+
+export default class Home extends Vue {
+  public showModal: boolean = false;
+  public text: string = '';
+
+  
+  private completeTask(task: string) {
+    this.$store.dispatch({ type: 'completeTask', task });
+  }
+
+  submitTask() {
+    this.$store.dispatch(addTask({
+      text: this.text,
+      done: false
+    }));
+    this.text = '';
+  }
+  created() {
+    // console.log(this.todos);
+  }
+}
 </script>
 
 <style lang="scss" scoped>

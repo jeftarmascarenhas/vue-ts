@@ -4,7 +4,7 @@ export default {
   completeTask: ({ commit }: { commit: Function }, { task }: { task: ITodoItem }) => {
     commit('completeTask', task);
   },
-  addTask: ({ commit }: { commit: Function }, { text }: { text: string }) => {
-    commit('addTask', text);
+  addTask: ({ commit }: { commit: Function }, { task }: { task: ITodoItem }) => {
+    commit('addTask', task);
   }
 }

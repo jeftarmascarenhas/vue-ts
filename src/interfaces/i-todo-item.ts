@@ -3,5 +3,5 @@ export interface ITodoItem {
   done: boolean;
 }
 export interface ITodoItemState {
-  todos: ITodoItem[]
+  todosList: ITodoItem[]
 }

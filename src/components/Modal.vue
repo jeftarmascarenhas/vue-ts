@@ -1,15 +1,14 @@
 <template lang="pug">
-  .modal
-    .modal__dialog
-      div.modal__content.modal__content--radius
-        .modal__content__header
-          h5 Header Title
-        .modal__content__body
-          slot
-        .modal__content__footer
-          button(type="button" class="btn btn-default") Close
-          button(type="button" class="btn btn-primary") Add
-
+  transition(name="modal")
+    .modal
+      .modal__dialog
+        div.modal__content.modal__content--radius
+          .modal__content__header
+            slot(name="header")
+          .modal__content__body
+            slot(name="content")
+          .modal__content__footer
+            button(type="button" @click="$emit('close')" class="btn btn-default") Close
 </template>
 
 <script lang="ts">
@@ -32,7 +31,6 @@ export default class Todo extends Vue {
     width: 100%;
     height: 100%;
     z-index: 1080;
-    display: none;
   }
   .modal__dialog {
     position: relative;

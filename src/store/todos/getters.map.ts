@@ -1,1 +1,1 @@
-export const todos = 'todos/todosList';
+export const getTodos: string = 'todos/getTodos';

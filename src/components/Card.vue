@@ -27,14 +27,14 @@ export default class Card extends Vue {}
   }
   .card__header {
     display: flex;
-    padding: 2em;
+    padding: 1em;
     justify-content: space-between;
     .card__header__title {
       font-size: 2.3em;
     }
   }
   .card_content {
-    padding: 2em;
+    padding: 1em;
   }
   .card__list {
     .card__list__item {

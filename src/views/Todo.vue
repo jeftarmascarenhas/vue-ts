@@ -56,9 +56,6 @@ export default class Home extends Vue {
     }));
     this.text = '';
   }
-  created() {
-    // console.log(this.todos);
-  }
 }
 </script>
 
@@ -68,6 +65,7 @@ export default class Home extends Vue {
     color: $text-secound;
     font-weight: 600;
     font-size: 1.3em;
+    margin-bottom: 1em;
   }
 </style>
 

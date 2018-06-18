@@ -1,21 +1,20 @@
 <template lang="pug">
   transition(name="modal")
-    .modal
-      .modal__dialog
-        div.modal__content.modal__content--radius
-          .modal__content__header
+    div(class="modal")
+      div(class="modal__dialog")
+        div(class="modal__content modal__content--radius")
+          div(class="modal__content__header")
             slot(name="header")
-          .modal__content__body
+          div(class="modal__content__body")
             slot(name="content")
-          .modal__content__footer
+          div(class="modal__content__footer")
             button(type="button" @click="$emit('close')" class="btn btn-default") Close
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
-
-@Component({})
+@Component
 export default class Todo extends Vue {
   @Prop() modal!: string;
 }
@@ -31,6 +30,7 @@ export default class Todo extends Vue {
     width: 100%;
     height: 100%;
     z-index: 1080;
+    transition: opacity 0.3s ease;
   }
   .modal__dialog {
     position: relative;
@@ -43,6 +43,7 @@ export default class Todo extends Vue {
    display: flex;
    flex-direction: column;
    background-color: $bg-ligth;
+   transition: all .3s ease;
    .modal__content__header,
    .modal__content__body,
    .modal__content__footer {
@@ -63,6 +64,14 @@ export default class Todo extends Vue {
       margin-right: 0.25rem;
     }
     border-top: 1px solid darken($bg-ligth, 10);
+  }
+  .modal-enter,
+  .modal-leave-to {
+    opacity: 0;
+  }
+  .modal-enter .modal__content,
+  .modal-enter-active .modal__content {
+    transform: scale(1.1)
   }
   @media (min-width:768px) {
     .modal__dialog {

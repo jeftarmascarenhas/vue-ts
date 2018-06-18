@@ -1,5 +1,5 @@
-import { ITodoItemState } from '@/interfaces/i-todo-item';
+import { ITodoItemState } from './state-interface';
 
 export default {
-  todosList: (state: ITodoItemState) => state.todosList
+  getTodos: (state: ITodoItemState) => state.todosList
 };

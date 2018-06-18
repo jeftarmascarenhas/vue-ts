@@ -1,4 +1,4 @@
-import { ITodoItem } from '@/interfaces/i-todo-item';
+import { ITodoItem } from './state-interface';
 
 export default {
   completeTask: ({ commit }: { commit: Function }, { task }: { task: ITodoItem }) => {

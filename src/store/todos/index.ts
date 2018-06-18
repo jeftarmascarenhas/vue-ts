@@ -1,5 +1,3 @@
-import { ITodoItem, ITodoItemState } from '@/interfaces/i-todo-item';
-
 import state from './state';
 import getters from './getters';
 import actions from './actions';
@@ -10,5 +8,5 @@ export default {
   getters,
   actions,
   mutations,
-  namespeced: true
+  namespaced: true
 }

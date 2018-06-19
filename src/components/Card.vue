@@ -36,11 +36,12 @@ export default class Card extends Vue {}
   .card_content {
     padding: 1em;
   }
-  .card__list {
-    .card__list__item {
-      display: flex;
-      align-items: center;
-    }
+  .card__list__item {
+    display: flex;
+    align-items: center;
+  }
+  .card__list__item--margin-bottom {
+    margin-bottom: 1.5em;
   }
 }
 </style>

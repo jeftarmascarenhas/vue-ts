@@ -1,9 +1,9 @@
 <template lang="pug">
   div(:class="{ completed: todo.done }")
-    input(type="checkbox" :checked="todo.done" @change="onCompleteTask(todo)" class="custom-check" id="type-check" :value="todo.done")
+    input(type="checkbox" :checked="todo.done" @change="onCompleteTask(todo)" class="custom-check" id="type-check" name="type-check" :value="todo.done")
     label(for="type-check")
     h4(class="card-list__text card-list__text--border")
-      span {{ todo.text }}
+      span {{todo.id}} - {{ todo.text }}
 </template>
 
 <script lang="ts">
@@ -17,6 +17,7 @@ export default class TodoList extends Vue {
   private todo!: ITodoItem;
 
   private onCompleteTask(todo: ITodoItem) {
+    console.log(todo.id);
     this.$emit('onCompleteTask', { todo });
   }
 }

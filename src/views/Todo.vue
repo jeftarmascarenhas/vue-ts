@@ -7,7 +7,7 @@
       div(slot="card_content")
         h3(class="task_count") {{ getTodos.length }} tasks
         div(class="card__list")
-          todo-list(v-for="(todo) in getTodos" class="card__list__item" :key="todo.id" :todo="todo" @onCompleteTask="completeTask")
+          todo-list(v-for="(todo) in getTodos" class="card__list__item card__list__item--margin-bottom" :key="todo.id" :todo="todo" @onCompleteTask="completeTask")
     modal(v-if="showModal" @close="showModal = false")
       h1(slot="header") Add todo
       form(@submit.stop.prevent="submitTask" slot="content")
@@ -29,6 +29,8 @@ import TodoList from '@/components/TodoList.vue';
 import Modal from '@/components/Modal.vue';
 import Card from '@/components/Card.vue';
 
+let todoID: number = 0;
+
 @Component({
   components: {
     TodoList,
@@ -37,8 +39,6 @@ import Card from '@/components/Card.vue';
   }
 })
 export default class Home extends Vue {
-
-  public todoID: number = 0;
   public showModal: boolean = false;
   public text: string = '';
 
@@ -50,7 +50,7 @@ export default class Home extends Vue {
 
   submitTask() {
     this.$store.dispatch(addTask({
-      id: this.todoID++,
+      id: todoID++,
       text: this.text,
       done: false
     }));
